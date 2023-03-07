@@ -23,6 +23,7 @@ namespace PishiStiray
         public MainWindow()
         {
             InitializeComponent();
+            BaseClass.BD = new Entities();
             FrameClass.frame = mainFrame;
             FrameClass.frame.Navigate(new Autorization());
         }

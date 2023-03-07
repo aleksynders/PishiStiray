@@ -4,6 +4,96 @@
              xmlns:local="clr-namespace:PishiStiray"
              StartupUri="/Window/MainWindow.xaml">
     <Application.Resources>
-         
+
+        <SolidColorBrush x:Key="PrimaryBlueColor" Color="#498C5C"></SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryTextColor" Color="White"></SolidColorBrush>
+        <SolidColorBrush x:Key="ButtonMouseOverColor" Color="#3a704a"></SolidColorBrush>
+        <SolidColorBrush x:Key="ButtonPressedColor" Color="#6bb580"></SolidColorBrush>
+
+
+        <Style x:Key="MainButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBlueColor}"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryBlueColor}"></Setter>
+            <Setter Property="FontWeight" Value="ExtraBold"></Setter>
+            <Setter Property="Padding" Value="11 5.2"></Setter>
+            <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="MaxHeight" Value="70"></Setter>
+            <Setter Property="Width" Value="auto"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="btnBorder" CornerRadius="5"
+                                Background="{TemplateBinding Background}"
+                                Width="{TemplateBinding Width}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                MaxHeight="{TemplateBinding MaxHeight   }"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter x:Name="ContentPresenter" Focusable="False"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="btnBorder" Property="Background" Value="{DynamicResource ButtonMouseOverColor}"></Setter>
+                                <Setter TargetName="btnBorder" Property="BorderBrush" Value="{DynamicResource PrimaryBlueColor}"></Setter>
+                                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="btnBorder" Property="Background" Value="{DynamicResource ButtonPressedColor}"></Setter>
+                                <Setter TargetName="btnBorder" Property="BorderBrush" Value="{DynamicResource PrimaryBlueColor}"></Setter>
+                                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="AcceptButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{DynamicResource PrimaryBlueColor}"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"></Setter>
+            <Setter Property="FontWeight" Value="SemiBold"></Setter>
+            <Setter Property="Padding" Value="12 6 12 6"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="MaxHeight" Value="70"></Setter>
+            <Setter Property="Width" Value="auto"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="btnBorder" CornerRadius="5"
+                                Background="{TemplateBinding Background}"
+                                Width="{TemplateBinding Width}"
+                                MaxHeight="{TemplateBinding MaxHeight   }"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter x:Name="ContentPresenter" Focusable="False"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="btnBorder" Property="Background" Value="{DynamicResource ButtonMouseOverColor}"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="btnBorder" Property="Background" Value="{DynamicResource ButtonPressedColor}"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
     </Application.Resources>
 </Application>

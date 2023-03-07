@@ -20,8 +20,8 @@
                     <PasswordBox x:Name="pbPassword" MinWidth="300"/>
                 </GroupBox>
             </StackPanel>
-            <Button Content="Войти"/>
-            <Button Content="Войти как Гость"/>
+            <Button Content="Войти" Style="{DynamicResource AcceptButtonStyle}" Width="180" Height="35" Padding="5"/>
+            <Button Content="Войти как Гость" Style="{DynamicResource MainButtonStyle}" Width="180" Height="35" Padding="1 0" Margin="0 10 0 0"/>
         </StackPanel>
     </Grid>
 </Page>

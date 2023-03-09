@@ -24,7 +24,18 @@ namespace PishiStiray
         public ListProduct(User user)
         {
             InitializeComponent();
+            lvListProducts.ItemsSource = BaseClass.BD.Product.ToList();
             this.user = user;
+        }
+        public ListProduct()
+        {
+            InitializeComponent();
+            lvListProducts.ItemsSource = BaseClass.BD.Product.ToList();
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.frame.Navigate(new Autorization());
         }
     }
 }

@@ -33,7 +33,7 @@ namespace PishiStiray
         public int ProductQuantityInStock { get; set; }
         public Nullable<double> ProductDiscountMax { get; set; }
         public string ProductStatus { get; set; }
-        public string PoductPhoto { get; set; }
+        public string ProductPhoto { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }

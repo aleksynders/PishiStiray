@@ -80,5 +80,10 @@ namespace PishiStiray
                 }
             }
         }
+
+        private void GuestBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.frame.Navigate(new ListProduct());
+        }
     }
 }

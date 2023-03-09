@@ -5,10 +5,43 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PishiStiray"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1100"
       Title="ListProduct">
-
+    <Page.Resources>
+        <BitmapImage x:Key="defaultImage" UriSource="/Resources/picture.png"/>
+    </Page.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="lvListProducts" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#FF76E383" Background="{Binding colorBackground}">
+                        <Grid>
+                            <Image Source="{Binding ProductPhoto, TargetNullValue={StaticResource defaultImage}}" Width="180" HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Vertical" >
+                                <TextBlock Text="{Binding ProductName}" FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding ProductDescription}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="Скидка:" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="BackBtn" Content="Назад" Style="{DynamicResource MainButtonStyle}" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="40" Margin="15" Click="BackBtn_Click"/>
     </Grid>
 </Page>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище practic5Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище practic5Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="ProductCategoryID" />
@@ -71,7 +71,7 @@
           <Property Name="ProductQuantityInStock" Type="int" Nullable="false" />
           <Property Name="ProductDiscountMax" Type="float" />
           <Property Name="ProductStatus" Type="nvarchar(max)" />
-          <Property Name="PoductPhoto" Type="nvarchar(max)" />
+          <Property Name="ProductPhoto" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ProductSuppliers">
           <Key>
@@ -290,8 +290,7 @@
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="practic5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -371,12 +370,12 @@
           <Property Name="ProductQuantityInStock" Type="Int32" Nullable="false" />
           <Property Name="ProductDiscountMax" Type="Double" />
           <Property Name="ProductStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PoductPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
           <NavigationProperty Name="OrderProduct" Relationship="Self.FK_OrderProduct_Product" FromRole="Product" ToRole="OrderProduct" />
           <NavigationProperty Name="ProductSuppliers" Relationship="Self.FK_Product_ProductSuppliers" FromRole="Product" ToRole="ProductSuppliers" />
           <NavigationProperty Name="UnitOfMeasurement" Relationship="Self.FK_Product_UnitOfMeasurement" FromRole="Product" ToRole="UnitOfMeasurement" />
+          <Property Name="ProductPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ProductSuppliers">
           <Key>
@@ -664,6 +663,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="practic5Model.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductPhoto" ColumnName="ProductPhoto" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductArticleNumber" ColumnName="ProductArticleNumber" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
@@ -677,7 +677,6 @@
                 <ScalarProperty Name="ProductQuantityInStock" ColumnName="ProductQuantityInStock" />
                 <ScalarProperty Name="ProductDiscountMax" ColumnName="ProductDiscountMax" />
                 <ScalarProperty Name="ProductStatus" ColumnName="ProductStatus" />
-                <ScalarProperty Name="PoductPhoto" ColumnName="PoductPhoto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

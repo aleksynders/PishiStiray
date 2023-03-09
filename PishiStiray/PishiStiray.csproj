@@ -65,6 +65,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Window\CAPTCHA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\ListProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Page\Autorization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -76,6 +84,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Window\CAPTCHA.xaml.cs">
+      <DependentUpon>CAPTCHA.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\BaseClass.cs" />
     <Compile Include="BD.Context.cs">
@@ -97,6 +108,9 @@
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Class\FrameClass.cs" />
+    <Compile Include="Page\ListProduct.xaml.cs">
+      <DependentUpon>ListProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manufacturer.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>

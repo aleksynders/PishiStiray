@@ -27,5 +27,6 @@ namespace PishiStiray
             FrameClass.frame = mainFrame;
             FrameClass.frame.Navigate(new Autorization());
         }
+
     }
 }

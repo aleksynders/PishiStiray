@@ -12,28 +12,66 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="70"/>
             <RowDefinition/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="lvListProducts" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2">
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="tbCountProduct" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Text="wait" TextAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="5" VerticalAlignment="Center">
+                <TextBlock Text="Наименование" HorizontalAlignment="Center" FontSize="18"/>
+                <TextBox x:Name="tbSearch" Width="250" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Margin="5" VerticalAlignment="Center">
+                <TextBlock Text="Сортировка" HorizontalAlignment="Center" FontSize="18"/>
+                <ComboBox x:Name="cbSort" FontSize="16" Width="250">
+                    <ComboBoxItem Content="Без сортировки"/>
+                    <ComboBoxItem Content="По возрастанию стоимости"/>
+                    <ComboBoxItem Content="По убыванию стоимости"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Column="3" Margin="5" VerticalAlignment="Center">
+                <TextBlock Text="Фильтрация" HorizontalAlignment="Center" FontSize="18" />
+                <ComboBox x:Name="cbFilt" FontSize="16" Width="250">
+                    <ComboBoxItem Content="Все диапазоны"/>
+                    <ComboBoxItem Content="0-9,99%"/>
+                    <ComboBoxItem Content="10-14,99%"/>
+                    <ComboBoxItem Content="15% и более"/>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+        
+        <ListView x:Name="lvListProducts" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Margin" Value="10"/>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#FF76E383" Background="{Binding colorBackground}">
                         <Grid>
-                            <Image Source="{Binding ProductPhoto, TargetNullValue={StaticResource defaultImage}}" Width="180" HorizontalAlignment="Center"/>
-                            <StackPanel Orientation="Vertical" >
-                                <TextBlock Text="{Binding ProductName}" FontWeight="Bold" TextWrapping="Wrap"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="{Binding ProductPhoto, TargetNullValue={StaticResource defaultImage}}" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Vertical" Grid.Column="1">
+                                <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="20" TextWrapping="Wrap"/>
                                 <TextBlock Text="{Binding ProductDescription}" TextWrapping="Wrap"/>
                             </StackPanel>
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <TextBlock Text="Скидка:" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Grid>
@@ -42,6 +80,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button x:Name="BackBtn" Content="Назад" Style="{DynamicResource MainButtonStyle}" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="40" Margin="15" Click="BackBtn_Click"/>
+        <Button x:Name="BackBtn" Content="Назад" Style="{DynamicResource MainButtonStyle}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="40" Margin="15" Click="BackBtn_Click"/>
+        <TextBlock x:Name="tbFIO" Text="Иванов Иван Иванович" Visibility="Hidden" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" Margin="0 0 35 0"/>
     </Grid>
 </Page>

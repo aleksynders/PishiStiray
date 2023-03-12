@@ -25,12 +25,20 @@ namespace PishiStiray
         {
             InitializeComponent();
             lvListProducts.ItemsSource = BaseClass.BD.Product.ToList();
+            cbSort.SelectedIndex = 0;
+            cbFilt.SelectedIndex = 0;
+            tbCountProduct.Text = BaseClass.BD.Product.ToList().Count().ToString() + " из " + BaseClass.BD.Product.ToList().Count().ToString();
+            tbFIO.Text = user.UserSurname.Replace(" ", "") + " " + user.UserName + " " + user.UserPatronymic;
+            tbFIO.Visibility = Visibility.Visible;
             this.user = user;
         }
         public ListProduct()
         {
             InitializeComponent();
             lvListProducts.ItemsSource = BaseClass.BD.Product.ToList();
+            cbSort.SelectedIndex = 0;
+            cbFilt.SelectedIndex = 0;
+            tbCountProduct.Text = BaseClass.BD.Product.ToList().Count().ToString() + " из " + BaseClass.BD.Product.ToList().Count().ToString();
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)

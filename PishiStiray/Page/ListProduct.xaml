@@ -62,17 +62,25 @@
                     <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#FF76E383" Background="{Binding colorBackground}">
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="280"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="120"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="{Binding ProductPhoto, TargetNullValue={StaticResource defaultImage}}" Width="150" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <StackPanel Orientation="Vertical" Grid.Column="1">
                                 <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="20" TextWrapping="Wrap"/>
                                 <TextBlock Text="{Binding ProductDescription}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding Manufacturer.ProductManufacturer, StringFormat={}Производитель: {0}}" TextWrapping="Wrap"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Цена: " FontSize="14"/>
+                                    <TextBlock Text="{Binding ProductCost, StringFormat={}{0:F2}}" TextDecorations="{Binding textDecoration}" FontSize="14"/>
+                                    <TextBlock Text=" "/>
+                                    <TextBlock Text="{Binding costWithDiscountString}" FontSize="14" FontWeight="DemiBold"/>
+                                </StackPanel>
                             </StackPanel>
                             <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <TextBlock Text="Скидка:" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{Binding ProductDiscountAmount, StringFormat={}{0}%}" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Grid>
                     </Border>

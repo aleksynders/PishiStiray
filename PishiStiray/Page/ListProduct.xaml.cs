@@ -29,6 +29,10 @@ namespace PishiStiray
             cbFilt.SelectedIndex = 0;
             tbCountProduct.Text = BaseClass.BD.Product.ToList().Count().ToString() + " из " + BaseClass.BD.Product.ToList().Count().ToString();
             tbFIO.Text = user.UserSurname.Replace(" ", "") + " " + user.UserName + " " + user.UserPatronymic;
+            if (user.Role.RoleName == "Менеджер")
+                tbFIO.Text = "Менеджер" + " " + tbFIO.Text;
+            if (user.Role.RoleName == "Администратор")
+                tbFIO.Text = "Администратор" + " " + tbFIO.Text;
             tbFIO.Visibility = Visibility.Visible;
             this.user = user;
         }
@@ -80,7 +84,7 @@ namespace PishiStiray
             }
             lvListProducts.ItemsSource = product;
             if (product.Count == 0)
-                MessageBox.Show("Данные не найдены");
+                MessageBox.Show("Данные не найдены!");
             tbCountProduct.Text = "" + product.Count() + " из " + BaseClass.BD.Product.ToList().Count();
         }
 

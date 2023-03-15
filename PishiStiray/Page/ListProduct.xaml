@@ -86,9 +86,17 @@
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="AddBasket" Header="Добавить в заказ" Click="AddBasket_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
 
-        <Button x:Name="BackBtn" Content="Назад" Style="{DynamicResource MainButtonStyle}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="40" Margin="15" Click="BackBtn_Click"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="2">
+            <Button x:Name="BackBtn" Content="Назад" Style="{DynamicResource MainButtonStyle}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="40" Margin="15" Click="BackBtn_Click"/>
+            <Button Visibility="Hidden" x:Name="BasketBtn" Content="Корзина" Style="{DynamicResource AcceptButtonStyle}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="180" Height="40" Margin="15" Click="BasketBtn_Click"/>
+        </StackPanel>
         <TextBlock x:Name="tbFIO" Text="Иванов Иван Иванович" Visibility="Hidden" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" Margin="0 0 35 0"/>
     </Grid>
 </Page>

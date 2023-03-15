@@ -35,13 +35,9 @@ namespace PishiStiray
                 {
                     int l = rand.Next(2);
                     if (l == 0)
-                    {
                         text = text + (char)rand.Next('A', 'Z' + 1);
-                    }
                     else
-                    {
                         text = text + (char)rand.Next('a', 'z' + 1);
-                    }
                 }
             }
             int widthBegin = 0;

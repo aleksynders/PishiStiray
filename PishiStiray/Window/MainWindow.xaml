@@ -8,7 +8,7 @@
         Icon="/Resources/icon.ico"
         WindowStartupLocation="CenterScreen"
         FontFamily="Comic Sans MS"
-        Title="ООО «Пиши-стирай»" Height="650" Width="1200" MaxHeight="650" MinHeight="650" MaxWidth="1200" MinWidth="1200">
+        Title="ООО «Пиши-стирай»" Height="650" Width="1200" MaxHeight="850" MinHeight="650" MaxWidth="1350" MinWidth="1200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="65"/>

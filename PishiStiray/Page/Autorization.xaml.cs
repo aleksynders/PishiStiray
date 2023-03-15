@@ -47,7 +47,7 @@ namespace PishiStiray
                 tbCode.Visibility = Visibility.Collapsed;
             }
             else
-                tbCode.Text = "Получить новый код можно будет через " + countTime + " секунд";
+                tbCode.Text = "Попытаться авторизоваться можно будет через " + countTime + " секунд";
             countTime--;
         }
 
@@ -60,7 +60,7 @@ namespace PishiStiray
             {
                 if (countError == 0)
                 {
-                    MessageBox.Show("Пользователь с таким логиным и паролем не найден");
+                    MessageBox.Show("Пользователь с таким логиным и паролем не найден!");
                     countError++;
                 }
                 else

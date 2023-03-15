@@ -65,6 +65,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Window\Basket.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window\CAPTCHA.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,7 +89,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PartialProduct.cs" />
+    <Compile Include="Window\Basket.xaml.cs">
+      <DependentUpon>Basket.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Class\PartialProduct.cs" />
+    <Compile Include="Class\ProductBasket.cs" />
     <Compile Include="Window\CAPTCHA.xaml.cs">
       <DependentUpon>CAPTCHA.xaml</DependentUpon>
     </Compile>

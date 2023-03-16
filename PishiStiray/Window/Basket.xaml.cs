@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,7 +76,63 @@ namespace PishiStiray
 
         private void btnBasket_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Order order = new Order();
+                int countDay = 0; 
+                List<Order> orderLast = BaseClass.BD.Order.OrderBy(x => x.OrderID).ToList();
+                order.OrderStatusID = BaseClass.BD.OrderStatus.FirstOrDefault(x => x.OrderStatus1 == "Новый").OrderStatusID;
+                order.OrderDate = DateTime.Now;
+                if (getDeliveryTime())
+                {
+                    countDay = 6;
+                }
+                else
+                {
+                    countDay = 3;
+                }
+                order.OrderDeliveryDate = order.OrderDate.AddDays(countDay);
+                order.OrderPickupPointID = (int)((PishiStiray.PickupPoint)PickupPoint.SelectedItem).OrderPickupPointID;
+                if (user != null)
+                {
+                    order.UserID = user.UserID;
+                }
+                Random rand = new Random();
+                string textCode = "";
+                for (int i = 0; i < 3; i++)
+                {
+                    textCode = textCode + rand.Next(10).ToString();
+                }
+                order.OrderCode = Convert.ToInt32(textCode);
+                BaseClass.BD.Order.Add(order);
+                BaseClass.BD.SaveChanges();
+                foreach (ProductBasket productBasket in bascet)
+                {
+                    OrderProduct orderProduct = new OrderProduct();
+                    orderProduct.OrderID = order.OrderID;
+                    orderProduct.ProductID = productBasket.product.ProductID;
+                    orderProduct.Count = productBasket.count;
+                    BaseClass.BD.OrderProduct.Add(orderProduct);
+                }
+                BaseClass.BD.SaveChanges();
+                MessageBox.Show("Заказ успешно создан");
+            }
+            catch
+            {
+                MessageBox.Show("При создание заказа возникла ошибка!");
+            }
+        }
 
+        private bool getDeliveryTime()
+        {
+            foreach (ProductBasket productBasket in bascet)
+            {
+                if (productBasket.product.ProductQuantityInStock < 3 || productBasket.product.ProductQuantityInStock < productBasket.count)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void SumAndDiscount()

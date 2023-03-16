@@ -65,6 +65,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Window\DateOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\ListOrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window\StatusOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window\Basket.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -88,6 +100,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Window\DateOrder.xaml.cs">
+      <DependentUpon>DateOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\ListOrders.xaml.cs">
+      <DependentUpon>ListOrders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Class\PartialOrder.cs" />
+    <Compile Include="Window\StatusOrder.xaml.cs">
+      <DependentUpon>StatusOrder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window\Basket.xaml.cs">
       <DependentUpon>Basket.xaml</DependentUpon>

@@ -134,5 +134,54 @@ namespace PishiStiray
             if (basket.Count == 0)
                 BasketBtn.Visibility = Visibility.Hidden;
         }
+
+        private void DeleteBtn_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (user == null)
+                return;
+            Button btnDelete = sender as Button;
+            if (user.Role.RoleName == "Менеджер" || user.Role.RoleName == "Администратор")
+                btnDelete.Visibility = Visibility.Visible;
+            else
+                btnDelete.Visibility = Visibility.Collapsed;
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Button btn = (Button)sender;
+                int index = Convert.ToInt32(btn.Uid);
+                Product product = BaseClass.BD.Product.FirstOrDefault(x => x.ProductID == index);
+                List<OrderProduct> orderProducts = BaseClass.BD.OrderProduct.Where(x => x.ProductID == index).ToList();
+                if (orderProducts.Count == 0)
+                {
+                    BaseClass.BD.Product.Remove(product);
+                    BaseClass.BD.SaveChanges();
+                }
+                else
+                    MessageBox.Show("Товар нельзя удалить так как он указан в заказе!");
+            }
+            catch
+            {
+                MessageBox.Show("При удаление товара возникла ошибка");
+            }
+        }
+
+        private void OrdersBtn_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (user == null)
+                return;
+            Button btn = sender as Button;
+            if (user.Role.RoleName == "Менеджер" || user.Role.RoleName == "Администратор")
+                btn.Visibility = Visibility.Visible;
+            else
+                btn.Visibility = Visibility.Collapsed;
+        }
+
+        private void OrdersBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.frame.Navigate(new ListOrders(user));
+        }
     }
 }

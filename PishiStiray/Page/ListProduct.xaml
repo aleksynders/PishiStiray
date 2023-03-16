@@ -77,6 +77,7 @@
                                     <TextBlock Text=" "/>
                                     <TextBlock Text="{Binding costWithDiscountString}" FontSize="14" FontWeight="DemiBold"/>
                                 </StackPanel>
+                                <Button x:Name="DeleteBtn" Uid="{Binding ProductID}" Content="Удалить"  Style="{DynamicResource MainButtonStyle}" HorizontalAlignment="Left" Visibility="Hidden" Loaded="DeleteBtn_Loaded" Margin="0 15 0 0" Click="DeleteBtn_Click"/>
                             </StackPanel>
                             <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <TextBlock Text="Скидка:" HorizontalAlignment="Center"/>
@@ -96,6 +97,7 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="2">
             <Button x:Name="BackBtn" Content="Назад" Style="{DynamicResource MainButtonStyle}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="40" Margin="15" Click="BackBtn_Click"/>
             <Button Visibility="Hidden" x:Name="BasketBtn" Content="Корзина" Style="{DynamicResource AcceptButtonStyle}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="180" Height="40" Margin="15" Click="BasketBtn_Click"/>
+            <Button x:Name="OrdersBtn" Content="Оформленные заказы" Style="{DynamicResource AcceptButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="40" Width="280" Visibility="Hidden" Loaded="OrdersBtn_Loaded" Click="OrdersBtn_Click"/>
         </StackPanel>
         <TextBlock x:Name="tbFIO" Text="Иванов Иван Иванович" Visibility="Hidden" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" Margin="0 0 35 0"/>
     </Grid>
